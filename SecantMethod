@@ -1,0 +1,25 @@
+import sys
+
+def f(x):
+    return x ** 2 - 612
+
+def secant(x0, x1, n):
+    for i in range(n):
+        if f(x1) - f(x0) == 0:
+            return x1
+        x_temp = x1 - (f(x1) * (x1 - x0) * 1.0) / (f(x1) - f(x0))
+        x0 = x1
+        x1 = x_temp
+    return x1
+
+def main(argv):
+    arr = [1, 15, 10]
+
+    #if (len(sys.argv) != 4):
+    #    sys.exit('Usage: secant_method.py <x0> <x1> <n>')
+    print('The root is: ')
+    print(secant(float(arr[0]), float(arr[1]), int(arr[2])))
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
